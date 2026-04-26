@@ -34,6 +34,7 @@ data/output/
 *.jsonl
 *.xlsx
 *.csv
+*.txt
 
 # IDE / OS
 .DS_Store

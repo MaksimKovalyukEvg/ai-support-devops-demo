@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Check for obvious secrets
         run: |
-          ! grep -RInE "OPENAI_API_KEY=sk-|sk-proj-|PASSWORD=.+|TOKEN=.+secret|toycreative|hmbserv" . \
+          ! grep -RInE "sk-proj-|OPENAI_API_KEY=sk-|PASSWORD=.+|TOKEN=.+secret|toycreative|hmbserv|194\.87" . \
             --exclude-dir=.git \
-            --exclude=".env.example"
+            --exclude=".env.example" \
+            --exclude="security-check.yml" \
+            --exclude="security.md"

@@ -24,9 +24,9 @@ PROD_DIR = KB_OUTPUT_DIR / "kb_prod"
 RETRIEVAL_DIR = KB_OUTPUT_DIR / "kb_retrieval"
 
 REMOTE_RU_HOST = os.getenv("KB_REMOTE_RU_HOST", "")
-REMOTE_RU_USER = os.getenv("KB_REMOTE_RU_USER", "root")
-REMOTE_RU_PATH = os.getenv("KB_REMOTE_RU_PATH", "/opt/gc-ai-backend/data/knowledge_retrieval.jsonl")
-REMOTE_RU_SERVICE = os.getenv("KB_REMOTE_RU_SERVICE", "gc-ai-backend")
+REMOTE_RU_USER = os.getenv("KB_REMOTE_RU_USER", "deploy")
+REMOTE_RU_PATH = os.getenv("KB_REMOTE_RU_PATH", "/opt/demo-backend/data/knowledge_retrieval.jsonl")
+REMOTE_RU_SERVICE = os.getenv("KB_REMOTE_RU_SERVICE", "demo-backend")
 
 STAGES = [
     {"key": "prepare_input",      "title": "Подготовка входного TXT",                 "weight": 4},
