@@ -1,8 +1,8 @@
 import json
 import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 HOST = "127.0.0.1"
 PORT = int(os.getenv("PORT", "8787"))
@@ -20,6 +20,7 @@ SYSTEM_PROMPT = """
 
 def build_openai_input(messages):
     result = []
+
     for msg in messages[:20]:
         role = msg.get("role", "user")
         content = str(msg.get("content") or "").strip()[:4000]
@@ -30,10 +31,10 @@ def build_openai_input(messages):
         if role not in {"user", "assistant"}:
             role = "user"
 
-        item_type = "output_text" if role == "assistant" else "input_text"
+        content_type = "output_text" if role == "assistant" else "input_text"
         result.append({
             "role": role,
-            "content": [{"type": item_type, "text": content}]
+            "content": [{"type": content_type, "text": content}]
         })
 
     return result
@@ -145,6 +146,7 @@ class Handler(BaseHTTPRequestHandler):
 def main():
     server = ThreadingHTTPServer((HOST, PORT), Handler)
     print(f"Backend started on http://{HOST}:{PORT}")
+
     try:
         server.serve_forever()
     finally:
