@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+!.env.example
+credentials/
+.session/
+state.json
+*.pem
+*.key
+*.crt
+*service-account*.json
+
+# Runtime / logs
+logs/
+runtime/
+runs/
+exports/
+*.log
+
+# Data artifacts
+data/input/
+data/output/
+*.db
+*.sqlite
+*.duckdb
+*.parquet
+*.jsonl
+*.xlsx
+*.csv
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,16 @@
+name: security-check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  grep-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for obvious secrets
+        run: |
+          ! grep -RInE "OPENAI_API_KEY=sk-|sk-proj-|PASSWORD=.+|TOKEN=.+secret|toycreative|hmbserv" . \
+            --exclude-dir=.git \
+            --exclude=".env.example"
